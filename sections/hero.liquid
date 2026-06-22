@@ -1,0 +1,101 @@
+<section class="dc-hero" id="hero">
+  {% if section.settings.hero_image != blank %}
+    <img
+      class="dc-hero__bg"
+      src="{{ section.settings.hero_image | image_url: width: 2000 }}"
+      alt="{{ section.settings.hero_image.alt | default: 'DermaCore — Beauty Support From Within' }}"
+      loading="eager"
+      fetchpriority="high"
+    >
+  {% endif %}
+  <div class="dc-hero__overlay"></div>
+
+  <div class="dc-hero__content">
+    <div class="dc-hero__inner">
+
+      <p class="dc-eyebrow dc-hero__eyebrow">{{ section.settings.eyebrow | default: 'Clinically Inspired · Dermatology-Backed' }}</p>
+
+      <h1 class="dc-h1 dc-hero__headline">
+        {{ section.settings.headline | default: 'Glow Starts From Within.' }}
+      </h1>
+
+      <p class="dc-hero__sub">
+        {{ section.settings.subheadline | default: 'Premium collagen peptide gummies formulated to support glowing skin, healthy-looking hair, and stronger nails. One daily ritual. Thirty days of consistency.' }}
+      </p>
+
+      <div class="dc-hero__actions">
+        <a href="#featured-product" class="dc-btn dc-btn--rose">
+          {{ section.settings.cta_primary | default: 'Start Your Glow Ritual' }}
+        </a>
+        <a href="#how-it-works" class="dc-btn dc-btn--outline" style="color: var(--navy); border-color: var(--navy);">
+          {{ section.settings.cta_secondary | default: 'See How It Works' }}
+        </a>
+      </div>
+
+      <div class="dc-hero__trust">
+        <div class="dc-hero__trust-item">
+          <span class="dc-hero__trust-dot"></span>
+          <span>Science-backed formula</span>
+        </div>
+        <div class="dc-hero__trust-item">
+          <span class="dc-hero__trust-dot"></span>
+          <span>Made in a GMP facility</span>
+        </div>
+        <div class="dc-hero__trust-item">
+          <span class="dc-hero__trust-dot"></span>
+          <span>Free delivery over R800</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero background image",
+      "info": "Upload the 'Glow Starts From Within' gradient image (image 8 from your assets)"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "Clinically Inspired · Dermatology-Backed"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Hero headline",
+      "default": "Glow Starts From Within."
+    },
+    {
+      "type": "textarea",
+      "id": "subheadline",
+      "label": "Sub-headline",
+      "default": "Premium collagen peptide gummies formulated to support glowing skin, healthy-looking hair, and stronger nails. One daily ritual. Thirty days of consistency."
+    },
+    {
+      "type": "text",
+      "id": "cta_primary",
+      "label": "Primary CTA text",
+      "default": "Start Your Glow Ritual"
+    },
+    {
+      "type": "text",
+      "id": "cta_secondary",
+      "label": "Secondary CTA text",
+      "default": "See How It Works"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,85 @@
+<section class="dc-ingredients" id="ingredients">
+  <div class="dc-ingredients__inner">
+
+    <div class="dc-ingredients__header">
+      <p class="dc-eyebrow">The Science Inside</p>
+      <h2 class="dc-h2">Every Ingredient Has a Reason</h2>
+      <p class="dc-body-text" style="max-width: 540px; margin: 0 auto;">
+        DermaCore is not a random blend. Every ingredient is selected for a specific role in supporting skin, hair, and nail health from within.*
+      </p>
+    </div>
+
+    <div class="dc-ingredients__image-wrap">
+
+      {% if section.settings.ingredients_image != blank %}
+        <div class="dc-ingredients__photo">
+          <img
+            src="{{ section.settings.ingredients_image | image_url: width: 900 }}"
+            alt="DermaCore key ingredients — hydrolyzed collagen, biotin, vitamins"
+            loading="lazy"
+          >
+        </div>
+      {% endif %}
+
+      <div class="dc-ingredients__list">
+
+        <div class="dc-ingredient-card">
+          <p class="dc-ingredient-card__name">Hydrolyzed Collagen</p>
+          <p class="dc-ingredient-card__role">
+            Collagen peptides are broken down for optimal absorption. Collagen is the most abundant structural protein in skin, hair, and nails — and our natural production declines from our mid-twenties.*
+          </p>
+          <span class="dc-ingredient-card__tag">Core Protein</span>
+        </div>
+
+        <div class="dc-ingredient-card">
+          <p class="dc-ingredient-card__name">Biotin 2500mcg</p>
+          <p class="dc-ingredient-card__role">
+            A key B-vitamin commonly used to support healthy hair and nail growth. DermaCore delivers 2500mcg per serving — one of the most studied doses for beauty benefits.*
+          </p>
+          <span class="dc-ingredient-card__tag">B-Vitamin Complex</span>
+        </div>
+
+        <div class="dc-ingredient-card">
+          <p class="dc-ingredient-card__name">Vitamin C · Vitamin E</p>
+          <p class="dc-ingredient-card__role">
+            Vitamin C supports collagen synthesis and antioxidant activity. Vitamin E (45% DV) works alongside Vitamin C to protect skin cells from environmental stressors.*
+          </p>
+          <span class="dc-ingredient-card__tag">Antioxidant Duo</span>
+        </div>
+
+        <div class="dc-ingredient-card">
+          <p class="dc-ingredient-card__name">Folic Acid · Keratin · Zinc</p>
+          <p class="dc-ingredient-card__role">
+            Folic Acid supports healthy cell renewal. Keratin is a structural protein found in hair and nails. Zinc as Zinc Gluconate supports skin health and immune function.*
+          </p>
+          <span class="dc-ingredient-card__tag">Supporting Nutrients</span>
+        </div>
+
+      </div>
+    </div>
+
+    <p style="text-align: center; margin-top: 40px; font-size: 11px; color: var(--text-muted);">
+      *These statements have not been evaluated by the MCC or SAHPRA. This product is not intended to diagnose, treat, cure, or prevent any disease.
+    </p>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ingredients",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "ingredients_image",
+      "label": "Ingredient flat lay image",
+      "info": "Upload the ingredient flat lay with the product bottle and berry/vitamin drops (image 5)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ingredients"
+    }
+  ]
+}
+{% endschema %}

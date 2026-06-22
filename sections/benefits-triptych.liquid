@@ -1,0 +1,47 @@
+<section class="dc-benefits-panel" id="skin-hair-nails">
+  <div class="dc-benefits-panel__inner">
+
+    <div class="dc-benefits-panel__header">
+      <p class="dc-eyebrow">Three Benefits. One Ritual.</p>
+      <h2 class="dc-h2">Skin. Hair. Nails.</h2>
+      <div class="dc-spacer-sm"></div>
+      <p class="dc-body-text" style="max-width: 520px; margin: 0 auto;">
+        When you nourish beauty from within, the effects show up everywhere — in the clarity of your complexion, the strength of your hair, and the resilience of your nails.*
+      </p>
+    </div>
+
+    {% if section.settings.triptych_image != blank %}
+      <div class="dc-benefits-panel__image">
+        <img
+          src="{{ section.settings.triptych_image | image_url: width: 1400 }}"
+          alt="DermaCore benefits — supports glowing skin, promotes healthy hair, supports strong nails"
+          loading="lazy"
+        >
+      </div>
+    {% endif %}
+
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="#featured-product" class="dc-btn dc-btn--navy">Support All Three — R499.99</a>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Benefits Triptych",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "triptych_image",
+      "label": "Benefits triptych image",
+      "info": "Upload the skin/hair/nails 3-panel image (image 6)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Benefits Triptych"
+    }
+  ]
+}
+{% endschema %}

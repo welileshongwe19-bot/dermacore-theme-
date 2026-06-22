@@ -1,0 +1,74 @@
+{
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "announcement_text": "Free delivery on orders over R800 · Subscribe & Save 17% · Premium Collagen Support"
+      }
+    },
+    "hero": {
+      "type": "hero",
+      "settings": {}
+    },
+    "benefit-bar": {
+      "type": "benefit-bar",
+      "settings": {}
+    },
+    "featured-product": {
+      "type": "featured-product",
+      "settings": {}
+    },
+    "before-after": {
+      "type": "before-after",
+      "settings": {}
+    },
+    "results-timeline": {
+      "type": "results-timeline",
+      "settings": {}
+    },
+    "how-it-works": {
+      "type": "how-it-works",
+      "settings": {}
+    },
+    "benefits-triptych": {
+      "type": "benefits-triptych",
+      "settings": {}
+    },
+    "ingredients": {
+      "type": "ingredients",
+      "settings": {}
+    },
+    "supplement-facts": {
+      "type": "supplement-facts",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {}
+    },
+    "final-cta": {
+      "type": "final-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "hero",
+    "benefit-bar",
+    "featured-product",
+    "before-after",
+    "results-timeline",
+    "how-it-works",
+    "benefits-triptych",
+    "ingredients",
+    "supplement-facts",
+    "reviews",
+    "faq",
+    "final-cta"
+  ]
+}

@@ -1,0 +1,39 @@
+{% if section.settings.show_announcement %}
+<div class="dc-announcement" role="banner">
+  {% if section.settings.announcement_link != blank %}
+    <a href="{{ section.settings.announcement_link }}">{{ section.settings.announcement_text }}</a>
+  {% else %}
+    {{ section.settings.announcement_text }}
+  {% endif %}
+</div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Announcement Bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement bar",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": "Announcement text",
+      "default": "Free delivery on orders over R800 · Subscribe & Save 17% · Premium Collagen Support"
+    },
+    {
+      "type": "url",
+      "id": "announcement_link",
+      "label": "Announcement link (optional)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Announcement Bar"
+    }
+  ]
+}
+{% endschema %}

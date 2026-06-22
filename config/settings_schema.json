@@ -1,0 +1,44 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "DermaCore",
+    "theme_version": "1.0.0",
+    "theme_author": "DermaCore",
+    "theme_documentation_url": "",
+    "theme_support_url": ""
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "Upload a small square image (32x32px or 64x64px). Use your gummy bear icon."
+      }
+    ]
+  },
+  {
+    "name": "Colors",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_rose_deep",
+        "label": "Rose gold (primary)",
+        "default": "#BC8880"
+      },
+      {
+        "type": "color",
+        "id": "color_navy",
+        "label": "Navy (primary text)",
+        "default": "#1A1A2E"
+      },
+      {
+        "type": "color",
+        "id": "color_rose_pale",
+        "label": "Pale rose (backgrounds)",
+        "default": "#F5E8E4"
+      }
+    ]
+  }
+]

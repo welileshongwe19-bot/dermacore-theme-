@@ -1,0 +1,71 @@
+<section class="dc-timeline" id="timeline">
+  <div class="dc-timeline__inner">
+
+    <div class="dc-timeline__header">
+      <p class="dc-eyebrow">What to Expect</p>
+      <h2 class="dc-h2">Your 30-Day Glow Journey</h2>
+      <div class="dc-spacer-sm"></div>
+      <p class="dc-body-text" style="max-width: 500px; margin: 0 auto;">
+        Collagen peptides work progressively. This is what our customers experience when they commit to their daily DermaCore ritual.*
+      </p>
+    </div>
+
+    {% if section.settings.timeline_image != blank %}
+      <div class="dc-timeline__image">
+        <img
+          src="{{ section.settings.timeline_image | image_url: width: 1200 }}"
+          alt="DermaCore 30-day results timeline — from Day 1 to Day 30"
+          loading="lazy"
+        >
+      </div>
+    {% else %}
+      <!-- Fallback timeline if no image uploaded -->
+      <div style="max-width: 720px; margin: 0 auto;">
+        <div style="display: flex; flex-direction: column; gap: 0; position: relative;">
+          <div style="position: absolute; left: 120px; top: 0; bottom: 0; width: 1px; background: var(--rose-mid); opacity: 0.4;"></div>
+          {% assign milestones = 'Day 1 — 7|Skin begins to feel more hydrated. Your collagen ritual is underway.|Hair may feel softer and more manageable.,Day 7 — 14|Nails may start to feel less brittle. Skin hydration improves with consistent intake.,Day 14 — 21|Skin texture starts to look more even and radiant. Hair feels healthier and stronger from the root.,Day 21 — 30|Glow becomes your new normal. Skin, hair, and nails are visibly supported from within.*' | split: ',' %}
+          {% for milestone in milestones %}
+            {% assign parts = milestone | split: '|' %}
+            <div style="display: grid; grid-template-columns: 120px 1fr; gap: 32px; padding: 24px 0; position: relative;">
+              <div style="text-align: right; padding-right: 32px;">
+                <span style="font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--rose-deep); font-weight: 500;">{{ parts[0] }}</span>
+              </div>
+              <div style="padding-left: 32px; position: relative;">
+                <div style="position: absolute; left: -4px; top: 6px; width: 8px; height: 8px; background: var(--rose-deep); border-radius: 50;"></div>
+                <p style="font-size: 15px; font-weight: 300; color: var(--text-secondary); line-height: 1.6;">{{ parts[1] }}</p>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+
+    <p style="text-align: center; margin-top: 32px; font-size: 11px; color: var(--text-muted); font-style: italic;">
+      *Results may vary. Individual experience. Consistent daily use recommended.
+    </p>
+
+    <div style="text-align: center; margin-top: 40px;">
+      <a href="#featured-product" class="dc-btn dc-btn--rose">Start Day 1 Today</a>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Results Timeline",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "timeline_image",
+      "label": "Timeline graphic",
+      "info": "Upload the 'Day 1 to Day 30' results timeline image (image 7)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Results Timeline"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,21 @@
+{
+  "general": {
+    "password_page": {
+      "login_form_heading": "Enter password to access DermaCore"
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to Routine",
+      "sold_out": "Sold Out",
+      "unavailable": "Unavailable"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Your Cart",
+      "empty": "Your cart is empty.",
+      "checkout": "Checkout"
+    }
+  }
+}

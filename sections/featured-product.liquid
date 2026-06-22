@@ -1,0 +1,248 @@
+{% assign product = all_products[section.settings.product] %}
+{% if product == blank %}
+  {% assign product = shop.products.first %}
+{% endif %}
+
+<section class="dc-product" id="featured-product">
+  <div class="dc-product__inner">
+
+    <!-- GALLERY -->
+    <div class="dc-product__gallery" aria-label="Product images">
+
+      <div class="dc-product__main-image">
+        {% if section.settings.main_image != blank %}
+          <img
+            src="{{ section.settings.main_image | image_url: width: 900 }}"
+            alt="DermaCore Collagen Peptide Gummies — Front"
+            id="mainProductImage"
+            loading="eager"
+          >
+        {% elsif product.featured_image %}
+          <img
+            src="{{ product.featured_image | image_url: width: 900 }}"
+            alt="{{ product.featured_image.alt | default: product.title }}"
+            id="mainProductImage"
+            loading="eager"
+          >
+        {% endif %}
+      </div>
+
+      <div class="dc-product__thumbs" role="list">
+        {% if section.settings.image_1 != blank %}
+          <div class="dc-product__thumb active" role="listitem" data-full-src="{{ section.settings.image_1 | image_url: width: 900 }}" tabindex="0" aria-label="Product image 1">
+            <img src="{{ section.settings.image_1 | image_url: width: 200 }}" alt="DermaCore front" loading="lazy">
+          </div>
+        {% endif %}
+        {% if section.settings.image_2 != blank %}
+          <div class="dc-product__thumb" role="listitem" data-full-src="{{ section.settings.image_2 | image_url: width: 900 }}" tabindex="0" aria-label="Product image 2">
+            <img src="{{ section.settings.image_2 | image_url: width: 200 }}" alt="DermaCore back" loading="lazy">
+          </div>
+        {% endif %}
+        {% if section.settings.image_3 != blank %}
+          <div class="dc-product__thumb" role="listitem" data-full-src="{{ section.settings.image_3 | image_url: width: 900 }}" tabindex="0" aria-label="Product image 3">
+            <img src="{{ section.settings.image_3 | image_url: width: 200 }}" alt="DermaCore gummies" loading="lazy">
+          </div>
+        {% endif %}
+        {% if section.settings.image_4 != blank %}
+          <div class="dc-product__thumb" role="listitem" data-full-src="{{ section.settings.image_4 | image_url: width: 900 }}" tabindex="0" aria-label="Product image 4">
+            <img src="{{ section.settings.image_4 | image_url: width: 200 }}" alt="DermaCore ingredients" loading="lazy">
+          </div>
+        {% endif %}
+        {% if section.settings.image_5 != blank %}
+          <div class="dc-product__thumb" role="listitem" data-full-src="{{ section.settings.image_5 | image_url: width: 900 }}" tabindex="0" aria-label="Product image 5">
+            <img src="{{ section.settings.image_5 | image_url: width: 200 }}" alt="DermaCore results" loading="lazy">
+          </div>
+        {% endif %}
+      </div>
+
+    </div>
+
+    <!-- PRODUCT INFO -->
+    <div class="dc-product__info">
+
+      <div class="dc-product__badges">
+        <span class="dc-product__badge">Collagen Peptides</span>
+        <span class="dc-product__badge">Mixed Berry</span>
+        <span class="dc-product__badge">30-Day Supply</span>
+      </div>
+
+      <h2 class="dc-product__name">DermaCore<br>Collagen Peptide<br>Gummies</h2>
+      <p class="dc-product__tagline">Beauty From Within</p>
+
+      <div class="dc-product__rating" aria-label="4.9 out of 5 stars, 142 reviews">
+        <div class="dc-product__stars" aria-hidden="true">
+          <span class="dc-product__star">★</span>
+          <span class="dc-product__star">★</span>
+          <span class="dc-product__star">★</span>
+          <span class="dc-product__star">★</span>
+          <span class="dc-product__star">★</span>
+        </div>
+        <span class="dc-product__review-count">4.9 · <a href="#reviews">142 reviews</a></span>
+      </div>
+
+      <!-- Purchase Toggle -->
+      <div
+        class="dc-purchase-toggle"
+        role="group"
+        aria-label="Purchase frequency"
+        data-price-onetime="R599.99"
+        data-price-sub="R499.99"
+      >
+        <div class="dc-purchase-toggle__option" data-purchase-type="one-time">
+          <span class="dc-purchase-toggle__label">One-Time Purchase</span>
+          <span class="dc-purchase-toggle__price">R599.99</span>
+        </div>
+        <div class="dc-purchase-toggle__option active" data-purchase-type="subscribe">
+          <span class="dc-purchase-toggle__label">Subscribe &amp; Save</span>
+          <span class="dc-purchase-toggle__price dc-product-price-display">R499.99</span>
+          <span class="dc-purchase-toggle__save">Save 17% · Cancel anytime</span>
+        </div>
+      </div>
+
+      <!-- Quantity -->
+      <div class="dc-product__quantity">
+        <span class="dc-product__qty-label">Quantity</span>
+        <div class="dc-qty-control" role="group" aria-label="Quantity selector">
+          <button class="dc-qty-minus" aria-label="Decrease quantity" type="button">−</button>
+          <span class="dc-qty-control__value" aria-live="polite" aria-atomic="true">1</span>
+          <button class="dc-qty-plus" aria-label="Increase quantity" type="button">+</button>
+        </div>
+      </div>
+
+      <!-- Add to Cart Form -->
+      <form id="addToCartForm" method="post" action="/cart/add">
+        <input type="hidden" name="id" value="{{ product.first_available_variant.id | default: section.settings.variant_id }}">
+        <input type="hidden" id="purchaseTypeInput" name="properties[purchase_type]" value="subscribe">
+
+        <div class="dc-product__atc-wrap">
+          <button type="submit" class="dc-btn dc-btn--rose dc-product__atc">
+            Add to Routine
+            <span class="dc-btn-arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </form>
+
+      <!-- Trust signals -->
+      <div class="dc-product__secure" role="list">
+        <div class="dc-product__secure-item" role="listitem">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Secure Checkout
+        </div>
+        <div class="dc-product__secure-item" role="listitem">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Free Delivery over R800
+        </div>
+        <div class="dc-product__secure-item" role="listitem">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+          30-Day Satisfaction Promise
+        </div>
+      </div>
+
+      <!-- Key benefit highlights -->
+      <div class="dc-product__highlights">
+        <div class="dc-product__highlight-item">
+          <span class="dc-highlight-dot" aria-hidden="true"></span>
+          Formulated with hydrolyzed collagen peptides, biotin 2500mcg, and vitamins C, E, A &amp; D to support skin, hair and nails from within*
+        </div>
+        <div class="dc-product__highlight-item">
+          <span class="dc-highlight-dot" aria-hidden="true"></span>
+          Mixed berry natural flavour — a daily ritual that actually feels premium, not like a pharmacy vitamin
+        </div>
+        <div class="dc-product__highlight-item">
+          <span class="dc-highlight-dot" aria-hidden="true"></span>
+          60 gummies · 2 per day · 30-day supply · Take any time with or without food
+        </div>
+        <div class="dc-product__highlight-item">
+          <span class="dc-highlight-dot" aria-hidden="true"></span>
+          Made in a GMP-certified facility. No artificial dyes. Collagen derived from bovine source
+        </div>
+      </div>
+
+      <!-- Science badges -->
+      <div class="dc-product__science" role="list">
+        <div class="dc-science-badge" role="listitem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v11m0 0h10m-10 0l-6 6m16-6l-4 4"/></svg>
+          Science-Backed
+        </div>
+        <div class="dc-science-badge" role="listitem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          GMP Certified
+        </div>
+        <div class="dc-science-badge" role="listitem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+          Natural Flavour
+        </div>
+        <div class="dc-science-badge" role="listitem">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+          Dermatology-Inspired
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured Product",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Select your DermaCore product from the Shopify product list"
+    },
+    {
+      "type": "text",
+      "id": "variant_id",
+      "label": "Variant ID (fallback)",
+      "info": "Paste your product's variant ID from Shopify admin if product picker doesn't work"
+    },
+    {
+      "type": "header",
+      "content": "Product Gallery Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "Main / hero image",
+      "info": "Upload the front bottle shot (image 2)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Thumbnail 1 — Front bottle",
+      "info": "Upload the front bottle shot (image 2)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Thumbnail 2 — Back bottle (supplement facts)",
+      "info": "Upload the back bottle shot (image 3)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Thumbnail 3 — Floating gummies",
+      "info": "Upload the 'Your Daily Glow' gummies image (image 4)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Thumbnail 4 — Ingredient flat lay",
+      "info": "Upload the ingredient flat lay image (image 5)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_5",
+      "label": "Thumbnail 5 — Skin/Hair/Nails benefits",
+      "info": "Upload the triptych benefit image (image 6)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Product"
+    }
+  ]
+}
+{% endschema %}

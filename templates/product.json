@@ -1,0 +1,49 @@
+{
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "settings": {
+        "show_announcement": true,
+        "announcement_text": "Free delivery on orders over R800 · Subscribe & Save 17% · Premium Collagen Support"
+      }
+    },
+    "featured-product": {
+      "type": "featured-product",
+      "settings": {}
+    },
+    "how-it-works": {
+      "type": "how-it-works",
+      "settings": {}
+    },
+    "ingredients": {
+      "type": "ingredients",
+      "settings": {}
+    },
+    "supplement-facts": {
+      "type": "supplement-facts",
+      "settings": {}
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": {}
+    },
+    "faq": {
+      "type": "faq",
+      "settings": {}
+    },
+    "final-cta": {
+      "type": "final-cta",
+      "settings": {}
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "featured-product",
+    "how-it-works",
+    "ingredients",
+    "supplement-facts",
+    "reviews",
+    "faq",
+    "final-cta"
+  ]
+}

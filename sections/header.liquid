@@ -1,0 +1,60 @@
+<header class="dc-header" role="banner">
+  <div class="dc-header__inner">
+
+    <!-- Logo -->
+    <a href="{{ routes.root_url }}" class="dc-header__logo" aria-label="{{ shop.name }} - Home">
+      {% if section.settings.logo != blank %}
+        <img
+          src="{{ section.settings.logo | image_url: width: 120 }}"
+          alt="{{ shop.name }}"
+          width="60"
+          height="44"
+          loading="eager"
+        >
+      {% else %}
+        <span class="dc-header__wordmark">DERMACORE</span>
+      {% endif %}
+    </a>
+
+    <!-- Navigation -->
+    <nav class="dc-header__nav" aria-label="Main navigation">
+      <a href="#benefits">Why DermaCore</a>
+      <a href="#ingredients">Ingredients</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="dc-header__actions">
+      <a href="{{ routes.cart_url }}" class="dc-header__cart" aria-label="Cart">
+        Cart
+        <span class="dc-header__cart-count" aria-live="polite">
+          {{ cart.item_count }}
+        </span>
+      </a>
+      <a href="#featured-product" class="dc-btn dc-btn--rose" style="padding: 10px 24px; font-size: 11px; letter-spacing: 2px;">
+        Shop Now
+      </a>
+    </div>
+
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image",
+      "info": "Upload your DermaCore logo PNG. Recommended height: 88px (2x for retina)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Header"
+    }
+  ]
+}
+{% endschema %}

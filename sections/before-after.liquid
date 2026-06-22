@@ -1,0 +1,77 @@
+<section class="dc-before-after" id="results">
+  <div class="dc-before-after__inner">
+
+    <div class="dc-before-after__header">
+      <p class="dc-eyebrow">Real Results</p>
+      <h2 class="dc-h2">Beauty That Starts From Within</h2>
+      <div class="dc-spacer-sm"></div>
+      <p class="dc-body-text" style="max-width: 520px; margin: 0 auto;">
+        Consistency is the only secret. Women who commit to their DermaCore ritual for 30 days report visible changes in skin texture, hair vibrancy, and nail strength.*
+      </p>
+    </div>
+
+    <div class="dc-before-after__grid">
+
+      <div>
+        <div class="dc-before-after__card">
+          {% if section.settings.before_image != blank %}
+            <img
+              src="{{ section.settings.before_image | image_url: width: 800 }}"
+              alt="Before DermaCore — day 1"
+              loading="lazy"
+            >
+          {% endif %}
+          <span class="dc-before-after__label">Before · Day 1</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="dc-before-after__card">
+          {% if section.settings.after_image != blank %}
+            <img
+              src="{{ section.settings.after_image | image_url: width: 800 }}"
+              alt="After DermaCore — 30 days"
+              loading="lazy"
+            >
+          {% endif %}
+          <span class="dc-before-after__label dc-before-after__label--after">After · 30 Days</span>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="dc-before-after__caption">
+      *Individual results may vary. Images are of actual customers who consented to share their experience. Results depend on individual health, lifestyle, and consistency of use.
+    </p>
+
+    <div style="text-align: center; margin-top: 48px;">
+      <a href="#featured-product" class="dc-btn dc-btn--rose">Start My 30-Day Ritual</a>
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Before & After",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "before_image",
+      "label": "Before image",
+      "info": "Upload the 'before' selfie (image 9 — woman without product)"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image",
+      "label": "After image",
+      "info": "Upload the 'after' selfie (image 10 — woman holding DermaCore bottle)"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Before & After"
+    }
+  ]
+}
+{% endschema %}
