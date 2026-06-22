@@ -45,7 +45,10 @@
     },
     "before-after": {
       "type": "before-after",
-      "settings": {}
+      "settings": {
+        "before_image": "shopify://shop_images/hf_20260622_172131_79813a1d-b9e2-4d00-a5b9-ad493590f1ef.png",
+        "after_image": "shopify://shop_images/hf_20260622_183347_a9190a0a-d364-4163-bb04-74152b9db6f4.png"
+      }
     },
     "results-timeline": {
       "type": "results-timeline",
