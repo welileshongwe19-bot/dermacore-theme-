@@ -59,6 +59,7 @@
     },
     "how-it-works": {
       "type": "how-it-works",
+      "disabled": true,
       "settings": {}
     },
     "benefits-triptych": {
