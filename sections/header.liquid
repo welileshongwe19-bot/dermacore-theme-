@@ -1,22 +1,20 @@
 <header class="dc-header" role="banner">
   <div class="dc-header__inner">
 
-    <!-- Logo -->
+    <button class="dc-header__burger" id="dcBurger" aria-label="Open menu" aria-expanded="false" aria-controls="dcMobileNav">
+      <span class="dc-burger__line"></span>
+      <span class="dc-burger__line"></span>
+      <span class="dc-burger__line"></span>
+    </button>
+
     <a href="{{ routes.root_url }}" class="dc-header__logo" aria-label="{{ shop.name }} - Home">
       {% if section.settings.logo != blank %}
-        <img
-          src="{{ section.settings.logo | image_url: width: 120 }}"
-          alt="{{ shop.name }}"
-          width="60"
-          height="44"
-          loading="eager"
-        >
+        <img src="{{ section.settings.logo | image_url: width: 120 }}" alt="{{ shop.name }}" width="60" height="44" loading="eager">
       {% else %}
         <span class="dc-header__wordmark">DERMACORE</span>
       {% endif %}
     </a>
 
-    <!-- Navigation -->
     <nav class="dc-header__nav" aria-label="Main navigation">
       <a href="#benefits">Why DermaCore</a>
       <a href="#ingredients">Ingredients</a>
@@ -24,21 +22,53 @@
       <a href="#faq">FAQ</a>
     </nav>
 
-    <!-- Actions -->
-    <div class="dc-header__actions">
-      <a href="{{ routes.cart_url }}" class="dc-header__cart" aria-label="Cart">
-        Cart
-        <span class="dc-header__cart-count" aria-live="polite">
-          {{ cart.item_count }}
-        </span>
-      </a>
-      <a href="#featured-product" class="dc-btn dc-btn--rose" style="padding: 10px 24px; font-size: 11px; letter-spacing: 2px;">
-        Shop Now
-      </a>
-    </div>
+    <a href="{{ routes.cart_url }}" class="dc-header__cart" aria-label="Cart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+        <line x1="3" y1="6" x2="21" y2="6"/>
+        <path d="M16 10a4 4 0 01-8 0"/>
+      </svg>
+      {% if cart.item_count > 0 %}
+        <span class="dc-header__cart-count" aria-live="polite">{{ cart.item_count }}</span>
+      {% endif %}
+    </a>
 
   </div>
+
+  <nav class="dc-mobile-nav" id="dcMobileNav" aria-label="Mobile navigation" aria-hidden="true">
+    <div class="dc-mobile-nav__inner">
+      <a href="#benefits" class="dc-mobile-nav__link">Why DermaCore</a>
+      <a href="#ingredients" class="dc-mobile-nav__link">Ingredients</a>
+      <a href="#reviews" class="dc-mobile-nav__link">Reviews</a>
+      <a href="#faq" class="dc-mobile-nav__link">FAQ</a>
+      <a href="#featured-product" class="dc-btn dc-btn--rose dc-mobile-nav__cta">Shop Now</a>
+    </div>
+  </nav>
+
+  <div class="dc-mobile-nav__overlay" id="dcNavOverlay" aria-hidden="true"></div>
+
 </header>
+
+<script>
+  (function() {
+    var burger = document.getElementById('dcBurger');
+    var nav = document.getElementById('dcMobileNav');
+    var overlay = document.getElementById('dcNavOverlay');
+    function openMenu() {
+      nav.classList.add('open'); overlay.classList.add('open'); burger.classList.add('open');
+      burger.setAttribute('aria-expanded', 'true'); nav.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      nav.classList.remove('open'); overlay.classList.remove('open'); burger.classList.remove('open');
+      burger.setAttribute('aria-expanded', 'false'); nav.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    burger.addEventListener('click', function() { burger.classList.contains('open') ? closeMenu() : openMenu(); });
+    overlay.addEventListener('click', closeMenu);
+    nav.querySelectorAll('a').forEach(function(link) { link.addEventListener('click', closeMenu); });
+  })();
+</script>
 
 {% schema %}
 {
@@ -51,10 +81,6 @@
       "info": "Upload your DermaCore logo PNG. Recommended height: 88px (2x for retina)"
     }
   ],
-  "presets": [
-    {
-      "name": "Header"
-    }
-  ]
+  "presets": [{ "name": "Header" }]
 }
 {% endschema %}
