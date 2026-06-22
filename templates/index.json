@@ -1,15 +1,31 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "announcement-bar": {
       "type": "announcement-bar",
       "settings": {
         "show_announcement": true,
-        "announcement_text": "Free delivery on orders over R800 · Subscribe & Save 17% · Premium Collagen Support"
+        "announcement_text": "Free delivery on orders over R800 · Subscribe & Save 17% · Premium Collagen Support",
+        "announcement_link": ""
       }
     },
     "hero": {
       "type": "hero",
-      "settings": {}
+      "settings": {
+        "eyebrow": "Clinically Inspired · Dermatology-Backed",
+        "headline": "Glow Starts From Within.",
+        "subheadline": "Premium collagen peptide gummies formulated to support glowing skin, healthy-looking hair, and stronger nails. One daily ritual. Thirty days of consistency.",
+        "cta_primary": "Start Your Glow Ritual",
+        "cta_secondary": "See How It Works"
+      }
     },
     "benefit-bar": {
       "type": "benefit-bar",
@@ -17,7 +33,10 @@
     },
     "featured-product": {
       "type": "featured-product",
-      "settings": {}
+      "settings": {
+        "product": "dermacore-collagen-peptide-gummies-hair-skin-nails",
+        "variant_id": ""
+      }
     },
     "before-after": {
       "type": "before-after",
