@@ -1270,27 +1270,88 @@ ul, ol { list-style: none; }
 }
 
 @media (max-width: 768px) {
-  :root { --section-padding: 56px 20px; }
+  :root { --section-padding: 48px 16px; }
+
+  /* Prevent horizontal overflow globally */
+  html, body { overflow-x: hidden; max-width: 100vw; }
+  * { box-sizing: border-box; }
 
   .dc-header__nav { display: none; }
-  .dc-header__inner { padding: 14px 20px; }
+  .dc-header__inner { padding: 12px 16px; }
+  .dc-header__wordmark { font-size: 12px; letter-spacing: 4px; }
+  .dc-header__actions { gap: 12px; }
+  .dc-header__actions .dc-btn { padding: 9px 16px; font-size: 10px; letter-spacing: 1.5px; }
 
-  .dc-benefit-bar__inner { gap: 24px; overflow-x: auto; justify-content: flex-start; padding: 0 20px; }
-  .dc-benefit-bar { padding: 20px 0; }
+  .dc-benefit-bar__inner { gap: 16px; overflow-x: auto; justify-content: flex-start; padding: 0 16px; }
+  .dc-benefit-bar { padding: 18px 0; }
   .dc-benefit-bar__divider { display: none; }
+  .dc-benefit-bar__text { font-size: 10px; letter-spacing: 1.5px; white-space: nowrap; }
 
   .dc-hero { min-height: 80vh; }
-  .dc-hero__actions { flex-direction: column; }
-  .dc-hero__trust { flex-direction: column; gap: 12px; }
+  .dc-hero__content { padding: 60px 16px; }
+  .dc-hero__actions { flex-direction: column; align-items: flex-start; }
+  .dc-hero__actions .dc-btn { width: 100%; text-align: center; justify-content: center; }
+  .dc-hero__trust { flex-direction: column; gap: 10px; }
 
-  .dc-product__inner { grid-template-columns: 1fr; gap: 40px; }
-  .dc-product__gallery { position: static; }
+  /* Product section — core mobile fix */
+  .dc-product { padding: 48px 16px; overflow: hidden; }
+  .dc-product__inner { grid-template-columns: 1fr; gap: 32px; max-width: 100%; }
+  .dc-product__gallery { position: static; max-width: 100%; }
+  .dc-product__info { max-width: 100%; overflow: hidden; }
+
+  /* Badges wrap */
+  .dc-product__badges { flex-wrap: wrap; gap: 6px; }
+  .dc-product__badge { font-size: 8px; padding: 4px 10px; }
+
+  /* Purchase toggle — stack vertically */
+  .dc-purchase-toggle { flex-direction: column; gap: 0; }
+  .dc-purchase-toggle__option { border-radius: 8px; }
+  .dc-purchase-toggle__price { font-size: 20px; }
+
+  /* Button — full width, no overflow */
+  .dc-product__atc-wrap { width: 100%; }
+  .dc-product__atc {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    box-sizing: border-box;
+  }
+
+  /* Trust bar — wrap onto two lines */
+  .dc-product__secure {
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    justify-content: flex-start;
+    padding: 12px 0;
+  }
+  .dc-product__secure-item {
+    font-size: 9px;
+    letter-spacing: 1px;
+    gap: 5px;
+  }
+
+  /* Highlight bullets */
+  .dc-product__highlight-item {
+    font-size: 13px;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  /* Science badges wrap */
+  .dc-product__science { flex-wrap: wrap; gap: 8px; }
+  .dc-science-badge { font-size: 9px; padding: 6px 10px; }
+
+  /* Rating */
+  .dc-product__review-count { font-size: 11px; }
 
   .dc-grid-2 { grid-template-columns: 1fr; }
   .dc-grid-3 { grid-template-columns: 1fr 1fr; }
   .dc-grid-4 { grid-template-columns: 1fr 1fr; }
 
-  .dc-before-after__grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .dc-before-after__grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .dc-before-after__label { font-size: 9px; padding: 6px 14px; bottom: 12px; left: 12px; }
 
   .dc-how-to__steps { grid-template-columns: 1fr; }
 
@@ -1298,22 +1359,30 @@ ul, ol { list-style: none; }
 
   .dc-ingredients__image-wrap { grid-template-columns: 1fr; }
 
-  .dc-footer__top { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .dc-footer__top { grid-template-columns: 1fr 1fr; gap: 24px; }
 
   .dc-cta__actions { flex-direction: column; align-items: center; }
+  .dc-cta__actions .dc-btn { width: 100%; max-width: 320px; text-align: center; justify-content: center; }
 
   .dc-sticky-atc { display: block; }
-  .dc-sticky-atc__inner { gap: 12px; }
+  .dc-sticky-atc__inner { gap: 12px; padding: 0 16px; }
+  .dc-sticky-atc__btn { padding: 12px 20px; font-size: 10px; }
 }
 
 @media (max-width: 480px) {
+  :root { --section-padding: 40px 16px; }
+
   .dc-grid-3 { grid-template-columns: 1fr; }
   .dc-grid-4 { grid-template-columns: 1fr; }
   .dc-before-after__grid { grid-template-columns: 1fr; }
   .dc-footer__top { grid-template-columns: 1fr; }
-  .dc-purchase-toggle { flex-direction: column; }
-
-  .dc-product__secure { gap: 12px; flex-wrap: wrap; justify-content: flex-start; }
-
   .dc-benefit-bar__inner { gap: 20px; }
+
+  .dc-product__name { font-size: 28px; }
+  .dc-hero .dc-h1 { font-size: 36px; }
+
+  .dc-newsletter__form { flex-direction: column; }
+  .dc-newsletter__btn { width: 100%; }
+
+  .dc-footer__bottom { flex-direction: column; gap: 16px; text-align: center; }
 }
