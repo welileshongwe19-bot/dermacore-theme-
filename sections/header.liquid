@@ -9,7 +9,7 @@
 
     <a href="{{ routes.root_url }}" class="dc-header__logo" aria-label="{{ shop.name }} - Home">
       {% if section.settings.logo != blank %}
-        <img src="{{ section.settings.logo | image_url: width: 120 }}" alt="{{ shop.name }}" width="60" height="44" loading="eager">
+        <img src="{{ section.settings.logo | image_url: width: 600  }}" alt="{{ shop.name }}" width="240" height="60" loading="eager">
       {% else %}
         <span class="dc-header__wordmark">DERMACORE</span>
       {% endif %}
