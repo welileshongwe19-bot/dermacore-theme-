@@ -266,7 +266,7 @@ ul, ol { list-style: none; }
   gap: 12px;
   text-decoration: none;
 }
-.dc-header__logo img { height: 44px; width: auto; }
+.dc-header__logo img { height: 56px; width: auto; max-width: 240px; object-fit: contain; image-rendering: -webkit-optimize-contrast;}
 .dc-header__wordmark {
   font-family: var(--font-sans);
   font-size: 15px;
