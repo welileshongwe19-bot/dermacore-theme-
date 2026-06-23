@@ -1,8 +1,42 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "current": {
     "color_rose_deep": "#BC8880",
     "color_navy": "#1A1A2E",
-    "color_rose_pale": "#F5E8E4"
+    "color_rose_pale": "#F5E8E4",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+          "show_announcement": true,
+          "announcement_text": "Free delivery on orders over R800 · Subscribe & Save 17% · Premium Collagen Support",
+          "announcement_link": ""
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify://shop_images/DermaCore_Header_Logo.png"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "settings": {
+          "instagram_url": "",
+          "tiktok_url": "",
+          "facebook_url": ""
+        }
+      }
+    },
+    "content_for_index": []
   },
   "presets": {}
 }
