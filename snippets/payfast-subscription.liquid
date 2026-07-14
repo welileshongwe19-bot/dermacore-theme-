@@ -1,0 +1,113 @@
+{%- comment -%}
+  Payfast Subscribe & Save configuration + delivery details modal.
+  backend_url: when set, payments are signed server-side (Vercel) and orders are
+  created in Shopify automatically via the Payfast ITN webhook. When empty, the
+  static pre-computed signatures below are used as a fallback (no auto orders).
+  Static signatures cover quantities 1-10 at R499.99/month per unit.
+  NOTE: keep the Vercel UNIT_PRICE env var in sync with this price.
+{%- endcomment -%}
+<script type="application/json" id="payfastSubData">{"backend_url":"https://payfast-one.vercel.app","process_url":"https://www.payfast.co.za/eng/process","merchant_id":"22260641","merchant_key":"iankxtmjo4mzw","return_url":"https://dermacore.co.za/pages/subscription-confirmed","cancel_url":"https://dermacore.co.za/","subscription_type":"1","frequency":"3","cycles":"0","plans":{"1":{"amount":"499.99","recurring_amount":"499.99","item_name":"DermaCore Collagen Gummies - Monthly Subscription","signature":"7ad488b2a4266c8010459cf89dd473ed"},"2":{"amount":"999.98","recurring_amount":"999.98","item_name":"DermaCore Collagen Gummies x2 - Monthly Subscription","signature":"12f53d828a7a040ce57efc05a2fa58cf"},"3":{"amount":"1499.97","recurring_amount":"1499.97","item_name":"DermaCore Collagen Gummies x3 - Monthly Subscription","signature":"9f9f50dd3580e74c9356c9c06bf9002a"},"4":{"amount":"1999.96","recurring_amount":"1999.96","item_name":"DermaCore Collagen Gummies x4 - Monthly Subscription","signature":"2301891240d1e71dba299c2951e32062"},"5":{"amount":"2499.95","recurring_amount":"2499.95","item_name":"DermaCore Collagen Gummies x5 - Monthly Subscription","signature":"9630e2c233faa217bde8816eba502079"},"6":{"amount":"2999.94","recurring_amount":"2999.94","item_name":"DermaCore Collagen Gummies x6 - Monthly Subscription","signature":"4d22c0e40a47f3ec64a6a3f4af151723"},"7":{"amount":"3499.93","recurring_amount":"3499.93","item_name":"DermaCore Collagen Gummies x7 - Monthly Subscription","signature":"f7c7ce2c867d936a27891f855e871a7c"},"8":{"amount":"3999.92","recurring_amount":"3999.92","item_name":"DermaCore Collagen Gummies x8 - Monthly Subscription","signature":"5ff510b20565bcb077b4e9c9d343c494"},"9":{"amount":"4499.91","recurring_amount":"4499.91","item_name":"DermaCore Collagen Gummies x9 - Monthly Subscription","signature":"a1862a5541980ec35486718a013b4a6c"},"10":{"amount":"4999.90","recurring_amount":"4999.90","item_name":"DermaCore Collagen Gummies x10 - Monthly Subscription","signature":"3647a85c7adf328acb24de0c4cf01361"}}}</script>
+
+<!-- Subscribe & Save delivery details modal -->
+<div class="dc-sub-modal" id="dcSubModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="dcSubModalTitle">
+  <div class="dc-sub-modal__backdrop" data-sub-modal-close></div>
+  <div class="dc-sub-modal__panel">
+    <button type="button" class="dc-sub-modal__close" aria-label="Close" data-sub-modal-close>&times;</button>
+    <h3 class="dc-sub-modal__title" id="dcSubModalTitle">Delivery Details</h3>
+    <p class="dc-sub-modal__sub">Tell us where to send your monthly DermaCore delivery. You'll then be taken to Payfast to set up secure monthly billing.</p>
+
+    <form id="dcSubDetailsForm" novalidate>
+      <div class="dc-sub-modal__grid">
+        <div class="dc-sub-field">
+          <label for="dcSubFirstName">Name *</label>
+          <input type="text" id="dcSubFirstName" name="first_name" autocomplete="given-name" required>
+        </div>
+        <div class="dc-sub-field">
+          <label for="dcSubLastName">Surname *</label>
+          <input type="text" id="dcSubLastName" name="last_name" autocomplete="family-name" required>
+        </div>
+        <div class="dc-sub-field dc-sub-field--full">
+          <label for="dcSubEmail">Email *</label>
+          <input type="email" id="dcSubEmail" name="email" autocomplete="email" required>
+        </div>
+        <div class="dc-sub-field dc-sub-field--full">
+          <label for="dcSubCell">Cell phone number *</label>
+          <input type="tel" id="dcSubCell" name="cell" autocomplete="tel" placeholder="e.g. 082 123 4567" required>
+        </div>
+        <div class="dc-sub-field dc-sub-field--full">
+          <label for="dcSubStreet">Street address *</label>
+          <input type="text" id="dcSubStreet" name="street" autocomplete="address-line1" placeholder="Street number and name" required>
+        </div>
+        <div class="dc-sub-field dc-sub-field--full">
+          <label for="dcSubApartment">Apartment / unit (optional)</label>
+          <input type="text" id="dcSubApartment" name="apartment" autocomplete="address-line2" placeholder="e.g. Unit 4, Oak Villas">
+        </div>
+        <div class="dc-sub-field">
+          <label for="dcSubSuburb">Suburb *</label>
+          <input type="text" id="dcSubSuburb" name="suburb" required>
+        </div>
+        <div class="dc-sub-field">
+          <label for="dcSubTown">Town / City *</label>
+          <input type="text" id="dcSubTown" name="town" autocomplete="address-level2" required>
+        </div>
+        <div class="dc-sub-field">
+          <label for="dcSubProvince">Province *</label>
+          <select id="dcSubProvince" name="province" autocomplete="address-level1" required>
+            <option value="" disabled selected>Select province</option>
+            <option>Eastern Cape</option>
+            <option>Free State</option>
+            <option>Gauteng</option>
+            <option>KwaZulu-Natal</option>
+            <option>Limpopo</option>
+            <option>Mpumalanga</option>
+            <option>Northern Cape</option>
+            <option>North West</option>
+            <option>Western Cape</option>
+          </select>
+        </div>
+        <div class="dc-sub-field">
+          <label for="dcSubPostal">Postal code *</label>
+          <input type="text" id="dcSubPostal" name="postal_code" autocomplete="postal-code" inputmode="numeric" maxlength="4" required>
+        </div>
+      </div>
+      <p class="dc-sub-modal__error" id="dcSubError" role="alert" hidden>Please complete all required fields.</p>
+      <button type="submit" class="dc-btn dc-btn--rose dc-sub-modal__submit" id="dcSubDetailsSubmit">
+        Continue to Secure Payment
+        <span class="dc-btn-arrow" aria-hidden="true">→</span>
+      </button>
+      <p class="dc-sub-modal__note">Billed monthly via Payfast · Cancel anytime</p>
+    </form>
+  </div>
+</div>
+
+<style>
+  .dc-sub-modal { position: fixed; inset: 0; z-index: 999; display: none; }
+  .dc-sub-modal.open { display: block; }
+  .dc-sub-modal__backdrop { position: absolute; inset: 0; background: rgba(26, 26, 46, 0.55); }
+  .dc-sub-modal__panel {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    background: #fff; border-radius: 16px; padding: 28px 26px;
+    width: min(560px, calc(100vw - 32px)); max-height: calc(100vh - 48px);
+    overflow-y: auto; box-shadow: 0 24px 64px rgba(26, 26, 46, 0.25);
+  }
+  .dc-sub-modal__close {
+    position: absolute; top: 12px; right: 16px; border: none; background: none;
+    font-size: 26px; line-height: 1; cursor: pointer; color: #888;
+  }
+  .dc-sub-modal__title { margin: 0 0 6px; font-size: 22px; color: var(--navy, #1a1a2e); }
+  .dc-sub-modal__sub { margin: 0 0 18px; font-size: 14px; color: #555; }
+  .dc-sub-modal__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .dc-sub-field { display: flex; flex-direction: column; }
+  .dc-sub-field--full { grid-column: 1 / -1; }
+  .dc-sub-field label { font-size: 12px; font-weight: 600; margin-bottom: 4px; color: var(--navy, #1a1a2e); }
+  .dc-sub-field input, .dc-sub-field select {
+    padding: 10px 12px; border: 1px solid #d9d9e3; border-radius: 8px; font-size: 14px;
+    background: #fff; color: #222;
+  }
+  .dc-sub-field input:focus, .dc-sub-field select:focus { outline: 2px solid var(--rose, #e75480); border-color: transparent; }
+  .dc-sub-field input.dc-invalid, .dc-sub-field select.dc-invalid { border-color: #d0342c; }
+  .dc-sub-modal__error { color: #d0342c; font-size: 13px; margin: 10px 0 0; }
+  .dc-sub-modal__submit { width: 100%; margin-top: 16px; }
+  .dc-sub-modal__note { text-align: center; font-size: 12px; color: #777; margin: 10px 0 0; }
+  @media (max-width: 480px) { .dc-sub-modal__grid { grid-template-columns: 1fr; } }
+</style>
